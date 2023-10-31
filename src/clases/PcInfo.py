@@ -1,5 +1,6 @@
 import os
 
+# Clase que obtiene la informacion del pc
 class PcInfo:
     def __init__(self):
         self.pc_os = self.get_os()

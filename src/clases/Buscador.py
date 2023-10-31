@@ -1,5 +1,6 @@
 from os import listdir, getcwd, path, chdir
 
+# Clase que permite listar archivos y directorios, cambiar de directorio y mostrar la ruta actual
 class Buscador:
     
     def __init__(self):
