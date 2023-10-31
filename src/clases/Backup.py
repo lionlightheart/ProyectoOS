@@ -1,5 +1,6 @@
 import os
 
+# clase que permite realizar copias de seguridad
 class Backup:
     def __init__(self):
         self.source_folder = None
