@@ -1,6 +1,10 @@
 from src.clases.PcInfo import PcInfo
 from src.CopiaSeguridad_controller import menu_copias
+from src.Buscador_controller import menu_listar
 import os
+import flet as ft
+
+
 
 def main():
     pc = PcInfo()
@@ -10,7 +14,8 @@ def main():
         print("Seleccione una opción:")
         print("1. Copia de seguridad")
         print("2. Información de la PC")
-        print("3. Salir")
+        print("3. Explorador de archivos")
+        print("4. Salir")
         option = input("Ingrese el número de opción: ")
         if option == "1":
             os.system("cls")
@@ -21,6 +26,9 @@ def main():
             print(pc)
             input("Presione Enter tecla para continuar...")
         elif option == "3":
+            os.system('cls')
+            menu_listar()
+        elif option == "4":
             break
         else:
             os.system("cls")
