@@ -1,21 +1,22 @@
-import os
+from os import listdir, getcwd, path, chdir
 
 class Buscador:
+    
     def __init__(self):
-        self.ruta_actual = os.getcwd()
+        self.ruta_actual = getcwd()
 
     def mostar_directorio(self):
         return self.ruta_actual
 
-    def cambiar_directorio(self, ruta:str):
+    def cambiar_directorio(self, nueva_ruta:str):
+        if path.exists(nueva_ruta):
+            self.ruta_actual = nueva_ruta
+            return chdir(self.ruta_actual)
+            
+    def listar(self):
+        return listdir()
+    
+        
+    
+    
 
-        self.ruta_actual = ruta
-
-print(os.getcwd())
-print(os.listdir())
-os.chdir("C:/Users/chivo/OneDrive/Documentos/ProyectoOS/src")
-print(os.getcwd())
-print(os.listdir())
-os.system('ls')
-print("Hola")
-print("adios")
