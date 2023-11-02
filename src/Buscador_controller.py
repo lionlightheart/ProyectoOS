@@ -1,7 +1,6 @@
 import os
 from src.clases.Buscador import Buscador
 
-# Funcion que muestra el menu del buscador
 def menu_listar():
     buscador = Buscador()
 
@@ -36,7 +35,7 @@ def menu_listar():
 
 
 
-# Funcion que un tiulo del menu del buscador
+
 def titulo():
     print("*********************************************")
     print("*                                           *")
