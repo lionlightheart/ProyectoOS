@@ -13,8 +13,7 @@ def menu_copias():
         print("1. Seleccionar carpeta de origen")
         print("2. Seleccionar carpeta de destino")
         print("3. Ejecutar copia de seguridad")
-        print("4. Programar copia de seguridad")
-        print("5. Salir")
+        print("4. Salir")
 
         option = input("Ingrese el número de opción: ")
 
@@ -25,8 +24,6 @@ def menu_copias():
         elif option == "3":
             backup.execute_backup()
         elif option == "4":
-            pass
-        elif option == "5":
             break
         else:
             print("Opción no válida. Por favor intente de nuevo.")
@@ -38,3 +35,4 @@ def titulo():
     print("*        COPIAS DE SEGURIDAD                *")
     print("*                                           *")
     print("*********************************************")
+    
