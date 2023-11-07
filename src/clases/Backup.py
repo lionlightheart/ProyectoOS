@@ -84,12 +84,13 @@ class Backup:
                 
         return info_backup
         
-
+    # Guardamos la configuración en un fichero para que el usuario no tenga que configurar las carpetas siempre
     def save_config(self):
         with open(self.file_path, "w",encoding="utf-8") as f:
             f.write(f"source_folder={self.source_folder}\n")
             f.write(f"destination_folder={self.destination_folder}\n")
 
+    # Cargamos la config
     def load_config(self):
         if not os.path.exists(self.file_path):
             return
@@ -101,3 +102,4 @@ class Backup:
                     self.source_folder = value
                 elif key == "destination_folder":
                     self.destination_folder = value
+    
