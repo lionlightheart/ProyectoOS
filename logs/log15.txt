@@ -1,0 +1,47 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Herramienta para copia eficaz de archivos         
+-------------------------------------------------------------------------------
+
+  Inicio: lunes, 6 de noviembre de 202318:57:44
+   Origen : C:\Users\chivo\OneDrive\Documentos\ProyectoOS\prueba1\temp\
+     Destino : C:\Users\chivo\OneDrive\Documentos\ProyectoOS\prueba2\
+
+    Archivos: *.*
+	    
+  Opciones: *.* /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   1	C:\Users\chivo\OneDrive\Documentos\ProyectoOS\prueba1\temp\
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[10].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[11].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[12].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[13].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[14].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[1].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[2].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[3].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[4].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[5].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[6].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[7].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[8].zip
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[9].zip
+	  *Archivo EXTRA		       5	hola.txt
+	    Nuevo arch		     239	Copia de seguridad de prueba1_[15].zip
+100%  
+
+------------------------------------------------------------------------------
+
+               Total   Copiado   OmitidoNo coincidencia     ERROR    Extras
+Director.:         1         0         1         0         0         0
+ Archivos:         1         1         0         0         0        15
+    Bytes:       239       239         0         0         0     3.2 k
+   Tiempo:   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+Velocidad:               79666 Bytes/s
+Velocidad:               4.558 Megabytes/min
+   Finalizado: lunes, 6 de noviembre de 2023 18:57:44
+

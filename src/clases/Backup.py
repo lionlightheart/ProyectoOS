@@ -7,17 +7,15 @@ class Backup:
         self.destination_folder = None
         self.file_path = "backup_config.txt"
 
-    def select_source_folder(self):
-        os.system("cls")
+    def select_source_folder(self, ruta_carpeta):
         try:
-            self.source_folder = input("Ingrese la ruta de la carpeta a copiar: ")
+            self.source_folder = ruta_carpeta
             self.save_config()
         except:
-            print("La ruta ingresada no es válida.")
+            return False
 
-    def select_destination_folder(self):
-        os.system("cls")
-        self.destination_folder = input("Ingrese la ruta de la carpeta de destino: ")
+    def select_destination_folder(self, ruta_destino):
+        self.destination_folder = ruta_destino
         self.save_config()
 
     def execute_backup(self):
@@ -84,8 +82,7 @@ class Backup:
         with open(f"logs/{next_log_filename}", "w") as file:
             file.write(info_backup)
                 
-        input("Presione Enter para continuar...")
-
+        return info_backup
         
 
     def save_config(self):

@@ -11,7 +11,7 @@ class PcInfo:
         self.pc_hard_disk_count = self.get_count_disk()
     
     def __str__(self):
-        return f"OS: {self.pc_os}\nPC: {self.pc_name}\nCPU: {self.pc_cpu}\nGPU: {self.pc_gpu.strip()}\nRAM: {self.pc_ram}GB\nDISCOS: {self.pc_hard_disk_count}"
+        return f"Sistema operativo: {self.pc_os}\nPC: {self.pc_name}\nCPU: {self.pc_cpu}\nGPU: {self.pc_gpu.strip()}\nRAM: {self.pc_ram}GB\nDISCOS: {self.pc_hard_disk_count}"
     
     def get_os(self):
         return "Windows" if os.name == "nt" else "Linux"

@@ -1,6 +1,6 @@
 import os
 from src.clases.Buscador import Buscador
-
+# Funcion que utilizamos para mostrar e interactuar con el explorador de archivos
 def menu_listar():
     buscador = Buscador()
 

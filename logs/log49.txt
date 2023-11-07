@@ -1,0 +1,34 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Herramienta para copia eficaz de archivos         
+-------------------------------------------------------------------------------
+
+  Inicio: martes, 7 de noviembre de 202311:43:59
+   Origen : C:\Users\chivo\OneDrive\Documentos\ProyectoOS\prueba1\temp\
+     Destino : C:\Users\chivo\OneDrive\Documentos\ProyectoOS\prueba2\
+
+    Archivos: *.*
+	    
+  Opciones: *.* /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   1	C:\Users\chivo\OneDrive\Documentos\ProyectoOS\prueba1\temp\
+	  *Archivo EXTRA		     239	Copia de seguridad de prueba1_[1].zip
+	  *Archivo EXTRA		       5	hola.txt
+	    Nuevo arch		     239	Copia de seguridad de prueba1_[2].zip
+100%  
+
+------------------------------------------------------------------------------
+
+               Total   Copiado   OmitidoNo coincidencia     ERROR    Extras
+Director.:         1         0         1         0         0         0
+ Archivos:         1         1         0         0         0         2
+    Bytes:       239       239         0         0         0       244
+   Tiempo:   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+Velocidad:              239000 Bytes/s
+Velocidad:              13.675 Megabytes/min
+   Finalizado: martes, 7 de noviembre de 2023 11:43:59
+
