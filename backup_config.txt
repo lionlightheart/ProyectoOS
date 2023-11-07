@@ -1,2 +1,2 @@
-source_folder=C:\Users\chivo\OneDrive\Documentos\ProyectoOS\prueba1
-destination_folder=C:\Users\chivo\OneDrive\Documentos\ProyectoOS\prueba2
+source_folder=C:\Users\TheKingKraken\Documents\Proyecto_Python\ProyectoOS\carpeta1
+destination_folder=C:\Users\TheKingKraken\Documents\Proyecto_Python\ProyectoOS\carpeta2

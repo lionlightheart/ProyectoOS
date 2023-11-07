@@ -1,3 +1,8 @@
+""" Esta parte de la práctica fue nuestra primera idea y la que íbamos a desarrollar, por lo que trabajamos un poco en ella todos al principio,
+César hizo una aplicación sencilla que copiaba el contenido de una carpeta en otra, Rámon la pasó orientada a objetos y Franco hizo la parte
+de mantener la configuracion del usuario para posteriores copias. Posteriormente César añadio que esas copias fuesen comprimidas y se crease
+una carpeta logs con los registros de las copias de seguridad. """
+
 import os
 
 # clase que permite realizar copias de seguridad
@@ -9,7 +14,7 @@ class Backup:
 
     def select_source_folder(self, ruta_carpeta):
         try:
-            self.source_folder = ruta_carpeta
+            self.source_folder = ruta_carpeta 
             self.save_config()
         except:
             return False
@@ -24,20 +29,21 @@ class Backup:
             print("Por favor seleccione primero la carpeta de origen y la carpeta de destino.")
             return
 
-        # Limpiar la pantalla (para sistemas Windows)
         os.system("cls")
 
+        # Comprimir la carpeta de origen
+        os.system(f'powershell Compress-Archive -Path {self.source_folder} -DestinationPath {os.path.join(self.source_folder, "temp.zip")}')
+
+        # Creo una carpeta temp para guardar ahí la posterior compresion del directorio porque para hacerlo con robocopy no podia hacerlo directamente
         if not os.path.exists(self.source_folder+"/temp"):
             os.mkdir(self.source_folder+"/temp")
         
-        # Comprimir la carpeta de origen
-        os.system(f'powershell Compress-Archive -Path {self.source_folder} -DestinationPath {os.path.join(self.source_folder, "temp/temp.zip")}')
-
+        # Elegir el primer nombre disponible
         files_in_destination = [file for file in os.listdir(self.destination_folder) if file.endswith('.zip')]
         next_number = len(files_in_destination) + 1
         new_backup_filename = f'Copia de seguridad de {os.path.basename(self.source_folder)}_[{next_number}].zip'
 
-        os.rename(os.path.join(self.source_folder+'/temp', 'temp.zip'), os.path.join(self.source_folder+'/temp', new_backup_filename))
+        os.rename(os.path.join(self.source_folder, 'temp.zip'), os.path.join(self.source_folder+'/temp', new_backup_filename))
         
         # Realizar la copia de seguridad con Robocopy, incluyendo el archivo .zip
         info_backup = os.popen(f"robocopy {self.source_folder+'/temp'} {self.destination_folder}").read()        
@@ -67,12 +73,9 @@ class Backup:
 
         # Verificar el número más alto entre los logs existentes
         if existing_logs:
-            # Extraer números de los nombres de archivo de logs existentes
             existing_logs_numbers = [int(log.split('log')[1].split('.txt')[0]) for log in existing_logs]
-            # Obtener el siguiente número para el nuevo log
             next_log_number = max(existing_logs_numbers) + 1
         else:
-            # Si no hay logs existentes, crear el primero
             next_log_number = 1
 
         # Nombre del próximo archivo de log
