@@ -1,5 +1,6 @@
 import os
 
+# Clase que obtiene la informacion del pc
 class PcInfo:
     def __init__(self):
         self.pc_os = self.get_os()
@@ -10,7 +11,7 @@ class PcInfo:
         self.pc_hard_disk_count = self.get_count_disk()
     
     def __str__(self):
-        return f"OS: {self.pc_os}\nPC: {self.pc_name}\nCPU: {self.pc_cpu}\nGPU: {self.pc_gpu.strip()}\nRAM: {self.pc_ram}GB\nDISCOS: {self.pc_hard_disk_count}"
+        return f"Sistema operativo: {self.pc_os}\nPC: {self.pc_name}\nCPU: {self.pc_cpu}\nGPU: {self.pc_gpu.strip()}\nRAM: {self.pc_ram}GB\nDISCOS: {self.pc_hard_disk_count}"
     
     def get_os(self):
         return "Windows" if os.name == "nt" else "Linux"

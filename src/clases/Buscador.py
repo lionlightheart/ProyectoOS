@@ -1,19 +1,33 @@
-import os
+from os import listdir, getcwd, path, chdir
 
+# Clase que permite listar archivos y directorios, cambiar de directorio y mostrar la ruta actual
 class Buscador:
-    def __init__(self):
-        self.ruta_actual = os.getcwd()
+    
+    def __init__(self): 
+        self.ruta_actual = getcwd()
 
     def mostar_directorio(self):
         return self.ruta_actual
 
-    def cambiar_directorio(self, ruta:str):
+    # Comprobamos si existe la ruta y cambiamos
+    def cambiar_directorio(self, nueva_ruta:str):
+        if path.exists(nueva_ruta):
+            self.ruta_actual = nueva_ruta
+            chdir(self.ruta_actual)
+            return self.ruta_actual
+    
+    # Listamos los directorios y ficheros que tiene la ruta        
+    def listar(self): 
+        return listdir()
 
-        self.ruta_actual = ruta
+    # Comprueba si un elemento es directorio o fichero
+    def es_directorio(self,ruta):#Función que verifica si la ruta es un directorio.
+        if path.isdir(ruta):
+            return True
+        else:
+            return False
+    
+        
+    
+    
 
-print(os.getcwd())
-print(os.listdir())
-os.chdir("C:/Users/chivo/OneDrive/Documentos/ProyectoOS/src")
-print(os.getcwd())
-print(os.listdir())
-os.system('ls')

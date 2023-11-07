@@ -1,22 +1,21 @@
 import os
 
+# clase que permite realizar copias de seguridad
 class Backup:
     def __init__(self):
         self.source_folder = None
         self.destination_folder = None
         self.file_path = "backup_config.txt"
 
-    def select_source_folder(self):
-        os.system("cls")
+    def select_source_folder(self, ruta_carpeta):
         try:
-            self.source_folder = input("Ingrese la ruta de la carpeta a copiar: ")
+            self.source_folder = ruta_carpeta
             self.save_config()
         except:
-            print("La ruta ingresada no es válida.")
+            return False
 
-    def select_destination_folder(self):
-        os.system("cls")
-        self.destination_folder = input("Ingrese la ruta de la carpeta de destino: ")
+    def select_destination_folder(self, ruta_destino):
+        self.destination_folder = ruta_destino
         self.save_config()
 
     def execute_backup(self):
@@ -25,14 +24,37 @@ class Backup:
             print("Por favor seleccione primero la carpeta de origen y la carpeta de destino.")
             return
 
-        # Limpiar la pantalla
+        # Limpiar la pantalla (para sistemas Windows)
         os.system("cls")
 
-        # Realizar la copia de seguridad
-        info_backup = os.popen(f"robocopy {self.source_folder} {self.destination_folder}").read()
-        print("Copia de seguridad completada con éxito.")
-        input("Presione Enter para continuar...")
+        if not os.path.exists(self.source_folder+"/temp"):
+            os.mkdir(self.source_folder+"/temp")
+        
+        # Comprimir la carpeta de origen
+        os.system(f'powershell Compress-Archive -Path {self.source_folder} -DestinationPath {os.path.join(self.source_folder, "temp/temp.zip")}')
 
+        files_in_destination = [file for file in os.listdir(self.destination_folder) if file.endswith('.zip')]
+        next_number = len(files_in_destination) + 1
+        new_backup_filename = f'Copia de seguridad de {os.path.basename(self.source_folder)}_[{next_number}].zip'
+
+        os.rename(os.path.join(self.source_folder+'/temp', 'temp.zip'), os.path.join(self.source_folder+'/temp', new_backup_filename))
+        
+        # Realizar la copia de seguridad con Robocopy, incluyendo el archivo .zip
+        info_backup = os.popen(f"robocopy {self.source_folder+'/temp'} {self.destination_folder}").read()        
+
+        # Eliminar la carpeta 'temp' junto con su contenido
+        temp_folder = os.path.join(self.source_folder, "temp")
+        for root, dirs, files in os.walk(temp_folder, topdown=False):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+            for dir in dirs:
+                dir_path = os.path.join(root, dir)
+                os.rmdir(dir_path)
+        os.rmdir(temp_folder)
+        
+        print("Copia de seguridad completada con éxito.")
+        
         # Verificar si existe el directorio de logs, si no, crearlo
         if not os.path.exists('logs'):
             os.mkdir('logs')
@@ -59,6 +81,9 @@ class Backup:
         # Escribir la información de la copia de seguridad en el nuevo archivo de log
         with open(f"logs/{next_log_filename}", "w") as file:
             file.write(info_backup)
+                
+        return info_backup
+        
 
     def save_config(self):
         with open(self.file_path, "w",encoding="utf-8") as f:

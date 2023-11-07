@@ -1,6 +1,7 @@
 import os
 from src.clases.Backup import Backup
 
+# Funcion que muestra el menu de copias de seguridad
 def menu_copias():
     backup = Backup()
     backup.load_config()
@@ -27,10 +28,11 @@ def menu_copias():
         else:
             print("Opción no válida. Por favor intente de nuevo.")
 
-
+# Funcion que un tiulo del menu de copias de seguridad
 def titulo():
     print("*********************************************")
     print("*                                           *")
     print("*        COPIAS DE SEGURIDAD                *")
     print("*                                           *")
     print("*********************************************")
+    
